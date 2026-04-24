@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubliControl Pro - La Herramienta #1</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '871691599170348');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=871691599170348&ev=PageView&noscript=1" /></noscript>
+
+    <!-- ESTILOS Y FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS para animaciones de scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        grotesk: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#050d1a',
+                        darkCard: '#0a1628',
+                        cardAccent: '#0d1f3a',
+                        primaryGreen: '#10b981',
+                        neonCyan: '#3b82f6',
+                        softPurple: '#a855f7',
+                        goldRef: '#facc15'
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050d1a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .bg-cyber {
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glow-shadow-green {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .pulse-btn {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes emojiBounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-4px) scale(1.1);
+            }
+        }
+
+        .emoji-animate {
+            display: inline-block;
+            animation: emojiBounce 2s ease-in-out infinite;
+        }
+
+        /* FAQ Transitions */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.25rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #10b981;
+        }
+    </style>
+</head>
+
+<body class="bg-darkBg bg-cyber selection:bg-primaryGreen selection:text-white">
+
+    <!-- BANNER DE URGENCIA TOP -->
+    <div
+        class="w-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white text-center py-2 px-4 shadow-[0_4px_15px_rgba(239,68,68,0.5)] z-50 sticky top-0 flex items-center justify-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
+        <span class="animate-pulse">⚠️</span> ALERTA: EL DESCUENTO Y LOS BONOS DESAPARECEN PRONTO <span
+            class="animate-pulse">⚠️</span>
+    </div>
+
+    <!-- SECCIÓN 1: GANCHO / HERO (ATENCIÓN INTENSA, SIN BOTÓN DE COMPRA) -->
+    <header class="relative pt-12 pb-20 px-4 overflow-hidden">
+        <!-- Luces de fondo -->
+        <div
+            class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-primaryGreen/5 blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center z-10 relative">
+
+            <div data-aos="fade-down" class="mb-4 inline-block">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold bg-darkCard border border-primaryGreen/30 text-primaryGreen shadow-sm uppercase tracking-widest">
+                    <span class="animate-pulse">🟢</span> Atención: Dueños de Talleres
+                </span>
+            </div>
+
+            <h1 data-aos="zoom-in" data-aos-delay="100"
+                class="font-grotesk text-4xl md:text-6xl font-black leading-tight mb-6">
+                Descubre la cruda verdad: ¿Estás <br class="hidden md:block" />
+                <span class="text-gradient">imprimiendo billetes</span> o regalando tu tiempo?
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="200"
+                class="text-lg md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto font-medium">
+                Deja de frustrarte con Excels que nunca cuadran y
+                <strong class="text-white">olvídate de tirar meses de esfuerzo cobrando a ciegas por tu
+                    trabajo.</strong>
+            </p>
+
+            <!-- Hero Image Showcase (Impacto Visual del Problema vs Solución) -->
+            <div data-aos="fade-up" data-aos-delay="300"
+                class="relative max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl mb-6">
+                <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc30a574.05576944_Heroimage.webp"
+                    class="w-full object-cover transition-opacity hover:opacity-90"
+                    alt="Adivinar Costos vs SubliControl Pro">
+            </div>
+
+            <p data-aos="fade-up" data-aos-delay="400"
+                class="mt-8 text-sm md:text-base text-gray-500 italic max-w-xl mx-auto">
+                "Este es el mismo cerebro financiero que los talleres de estampado de alta rentabilidad están usando en
+                secreto para escalar sus ganancias."
+            </p>
+
+            <div class="mt-8 text-white animate-bounce">
+                <p class="text-sm uppercase tracking-widest font-bold text-gray-500 mb-2">Desliza para ver la cruda
+                    realidad</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="mx-auto text-primaryGreen">
+                    <path d="m6 9 6 6 6-6" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 2: AGITACIÓN DEL PROBLEMA (LA CRUDA REALIDAD) -->
+    <section class="py-20 px-4 bg-darkBg border-y border-red-500/10">
+        <div class="max-w-4xl mx-auto">
+            <div data-aos="fade-up" class="text-center mb-12">
+                <h2 class="font-grotesk text-3xl md:text-5xl font-bold mb-4">La cruda realidad de tener un taller <br
+                        class="hidden md:block" /> y <span class="text-red-500">no ver la plata.</span></h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/5 hover:border-red-500/50 transition-colors shadow-lg">
+                    <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
+                        <span class="text-2xl">⏳</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Pierdes Horas en Excels</h3>
+                    <p class="text-gray-400 text-sm">Haces cuentas en una libreta o en tablas de Excel donde una sola
+                        celda corrompida <u class="decoration-red-500 text-red-300">arruina todo tu mes</u>. Al final el
+                        inventario físico <u class="decoration-red-500 text-red-300">nunca cuadra</u> con los números.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/5 hover:border-red-500/50 transition-colors shadow-lg">
+                    <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
+                        <span class="text-2xl">💸</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white"><u class="decoration-red-500 text-red-300">Costos
+                            Asfixiantes</u> "Huecos"</h3>
+                    <p class="text-gray-400 text-sm">Cobraste "lo de siempre", pero olvidaste sumar los centímetros
+                        extra de papel o el margen de mermas. Tu ganancia <u class="decoration-red-500 text-red-300">fue
+                            absorbida</u> por los costos invisibles que no mediste al cotizar el pedido.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/5 hover:border-red-500/50 transition-colors shadow-lg">
+                    <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
+                        <span class="text-2xl">📉</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white"><u class="decoration-red-500 text-red-300">Te Quedas
+                            Sin Stock</u> Pasmado</h3>
+                    <p class="text-gray-400 text-sm">Te llega un pedido grande y vas a imprimir, pero SORPRESA... <u
+                            class="decoration-red-500 text-red-300">no hay tinta negra</u> o se acabó la cinta térmica.
+                        <u class="decoration-red-500 text-red-300">Cancelas pedidos</u>, quedas mal con el cliente y <u
+                            class="decoration-red-500 text-red-300">pierdes dinero seguro</u>.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/5 hover:border-red-500/50 transition-colors shadow-lg">
+                    <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
+                        <span class="text-2xl">👷</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">No Cobras Lo Que <u
+                            class="decoration-red-500 text-red-300">Realmente Vales</u></h3>
+                    <p class="text-gray-400 text-sm">No cobras tu tiempo ni <u
+                            class="decoration-red-500 text-red-300">tu mano de obra</u>, a veces no cobras tus gastos
+                        operativos como luz, etc. Literalmente estás <u
+                            class="decoration-red-500 text-red-300">trabajando para regalar tu dinero</u>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: LA REVELACIÓN (SOLUCIÓN) Y SHOWCASE -->
+    <section class="py-24 px-4 bg-cyber">
+        <div class="max-w-5xl mx-auto">
+            <div data-aos="zoom-in" class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-primaryGreen/10 border border-primaryGreen text-primaryGreen mb-4 uppercase tracking-widest"><span
+                        class="animate-pulse">✨</span> El Atajo Definitivo</span>
+                <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc30a571.20779544_logosublicontrol.webp"
+                    alt="SubliControl Pro" class="w-56 mx-auto mb-6 h-auto drop-shadow-lg" />
+                <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6">El <span class="text-gradient">Director
+                        Financiero</span> de tu negocio</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Un sistema en la nube súper potente, procesando todos
+                    tus datos y <strong
+                        class="text-white underline decoration-primaryGreen drop-shadow-md decoration-4 underline-offset-4">DÁNDOTE
+                        EL COSTO Y MARGEN DE CADA PIEZA QUE VENDES.</strong></p>
+            </div>
+
+            <!-- Carrusel o Imagen Central de Impacto -->
+            <div data-aos="fade-up"
+                class="relative max-w-4xl mx-auto rounded-3xl overflow-hidden border border-primaryGreen/30 bg-darkCard shadow-[0_0_50px_rgba(16,185,129,0.15)] flex justify-center items-center">
+                <div class="relative w-full h-full">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69d47843e71df3.25477499_mockupdesubli.webp"
+                        class="w-full h-auto object-cover z-10 transition-transform hover:scale-105 duration-700"
+                        alt="Ecosistema SubliControl Pro Mockup">
+                    <!-- Etiqueta Flotante Inferior -->
+                    <div
+                        class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 px-6 py-2 bg-black/80 backdrop-blur-md rounded-full border border-white/10 text-sm font-bold shadow-xl flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-primaryGreen animate-pulse"></span> Ecosistema Inteligente
+                        Integrado
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-6 text-sm text-gray-500 italic">No tienes que descargar nada. Accedes desde tu
+                móvil o tu PC de escritorio 24/7.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: EL ECOSISTEMA (SHOWCASE MULTI-CAPTURA) -->
+    <section class="py-24 px-4 bg-darkBg border-y border-primaryGreen/20 relative overflow-hidden">
+        <!-- Luces de fondo suaves -->
+        <div
+            class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primaryGreen/5 blur-[150px] pointer-events-none rounded-full">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-neonCyan/5 blur-[150px] pointer-events-none rounded-full">
+        </div>
+
+        <div class="max-w-5xl mx-auto space-y-32 relative z-10">
+
+            <!-- BLOQUE 1: DASHBOARD (Imagen Izquierda, Texto Derecha) -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right"
+                    class="relative rounded-2xl overflow-hidden border-2 border-blue-500/40 bg-darkCard shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                    <div
+                        class="absolute top-0 w-full h-8 bg-[#0d1f3a] border-b border-white/10 flex items-center px-4 gap-1.5 z-20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc31ef47.39545298_dashboard.webp"
+                        class="w-full mt-8 object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                        alt="Dashboard Analítico">
+                </div>
+
+                <div data-aos="fade-left">
+                    <div
+                        class="mb-4 inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-widest uppercase">
+                        Visión 360°
+                    </div>
+                    <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Métricas Claras.<br>
+                        <span class="text-blue-400">Control de Tu Dinero.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        Visualiza tus ganancias netas del día, márgenes reales y tu stock valorizado al instante, sin
+                        abrir un solo Excel.
+                    </p>
+                    <ul class="space-y-4 bg-darkCard p-6 rounded-2xl border border-white/5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Reportes Automatizados</p>
+                                <p class="text-sm text-gray-400">Cero trabajo manual. Todo el análisis de negocio se
+                                    genera y cruza al instante.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Detector de Fugas</p>
+                                <p class="text-sm text-gray-400">Sabrás en segundos qué productos te dejan dinero de
+                                    verdad y cuáles <strong class="text-red-400 font-bold">te dan pérdida</strong>.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BLOQUE 2: PEDIDOS (Texto Izquierda, Imagen Derecha) -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" class="order-2 md:order-1">
+                    <div
+                        class="mb-4 inline-block px-4 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold tracking-widest uppercase">
+                        Flujo de Taller
+                    </div>
+                    <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Flujo Visual.<br>
+                        <span class="text-orange-400">Despide a las libretas.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        Olvídate de clientes enojados porque olvidaste una fecha de entrega. Ordena tu caos de
+                        producción.
+                    </p>
+                    <ul class="space-y-4 bg-darkCard p-6 rounded-2xl border border-white/5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Tablero Kanban Inteligente</p>
+                                <p class="text-sm text-gray-400">Arrastra cada pedido entre etapas de "Diseño",
+                                    "Producción" y "Enviado".</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Entregas Perfectas</p>
+                                <p class="text-sm text-gray-400">Notificaciones claras sobre qué pedidos están urgentes
+                                    o por vencer.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-left"
+                    class="order-1 md:order-2 relative rounded-2xl overflow-hidden border-2 border-orange-500/30 bg-darkCard shadow-[0_0_30px_rgba(249,115,22,0.15)]">
+                    <div
+                        class="absolute top-0 w-full h-8 bg-[#0d1f3a] border-b border-white/10 flex items-center px-4 gap-1.5 z-20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc187090.10906282_pedidos.png"
+                        class="w-full mt-8 object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                        alt="Gestión de Pedidos">
+                </div>
+            </div>
+
+            <!-- BLOQUE 3: RECETAS (Imagen Izquierda, Texto Derecha) -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right"
+                    class="relative rounded-2xl overflow-hidden border-2 border-primaryGreen/40 bg-darkCard shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                    <div
+                        class="absolute top-0 w-full h-8 bg-[#0d1f3a] border-b border-white/10 flex items-center px-4 gap-1.5 z-20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc192c76.94902327_gastohormiga.webp"
+                        class="w-full mt-8 object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                        alt="Recetas Mágicas">
+                </div>
+
+                <div data-aos="fade-left">
+                    <div
+                        class="mb-4 inline-block px-4 py-1 rounded-full bg-primaryGreen/10 border border-primaryGreen/30 text-primaryGreen text-xs font-bold tracking-widest uppercase">
+                        Ingeniería de Costos
+                    </div>
+                    <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Rentabilidad Real.<br>
+                        <span class="text-primaryGreen">Recetas Maestras.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        Copiar el precio de tu competencia es un suicidio. Sublicontrol escupe el <strong
+                            class="text-neonCyan uppercase tracking-widest font-bold">precio exacto que debes
+                            cobrar</strong> sumergiéndose en todo aquello que normalmente pasas por alto.
+                    </p>
+                    <ul class="space-y-4 bg-darkCard p-6 rounded-2xl border border-white/5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-primaryGreen/20 flex items-center justify-center text-primaryGreen font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Desglose Milimétrico</p>
+                                <p class="text-sm text-gray-400">Añade y calcula el costo por ml de tinta o margen de
+                                    papel de hasta el más pequeño de tus insumos.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-primaryGreen/20 flex items-center justify-center text-primaryGreen font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Gastos Ocultos Añadidos</p>
+                                <p class="text-sm text-gray-400">Suma a tu receta el costo de tu <strong
+                                        class="text-white">Agua, Luz, Internet o Mano de Obra</strong> para blindar tu
+                                    margen real.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-primaryGreen/20 flex items-center justify-center text-primaryGreen font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Margen Asistido</p>
+                                <p class="text-sm text-gray-400">Le dices "quiero ganar un 50%" y el sistema fija el
+                                    precio por ti.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BLOQUE 4: INVENTARIO (Texto Izquierda, Imagen Derecha) -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" class="order-2 md:order-1">
+                    <div
+                        class="mb-4 inline-block px-4 py-1 rounded-full bg-goldRef/10 border border-goldRef/30 text-goldRef text-xs font-bold tracking-widest uppercase">
+                        Gestor Inteligente
+                    </div>
+                    <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Inventario Vivo.<br>
+                        <span class="text-goldRef">Cero quiebres de stock.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        Hacer conteos manuales te roba la vida. Automatiza tu taller para que tus insumos se administren
+                        solos y nunca te fallen en medio de un apuro.
+                    </p>
+                    <ul class="space-y-4 bg-darkCard p-6 rounded-2xl border border-white/5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-goldRef/20 flex items-center justify-center text-goldRef font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Descuento de Almacén</p>
+                                <p class="text-sm text-gray-400">Si vendes y entregas 3 gorras mágicas, el sistema resta
+                                    las 3 físicamente de tu almacén de forma automática.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Semáforo de Emergencia</p>
+                                <p class="text-sm text-gray-400">El sistema te arroja alertas Rojas antes de que te
+                                    falte cinta térmica de alta resistencia o tintas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-left"
+                    class="order-1 md:order-2 relative rounded-2xl overflow-hidden border-2 border-goldRef/30 bg-darkCard shadow-[0_0_30px_rgba(250,204,21,0.15)]">
+                    <div
+                        class="absolute top-0 w-full h-8 bg-[#0d1f3a] border-b border-white/10 flex items-center px-4 gap-1.5 z-20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc20cc313b85.40598293_insumos.webp"
+                        class="w-full mt-8 object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                        alt="Gestor de Inventario">
+                </div>
+            </div>
+
+            <!-- BLOQUE 5: SUBLIBOT IA (Imagen Izquierda, Texto Derecha) -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right"
+                    class="relative rounded-2xl overflow-hidden border-2 border-purple-500/40 bg-darkCard shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+                    <div
+                        class="absolute top-0 w-full h-8 bg-[#0d1f3a] border-b border-white/10 flex items-center px-4 gap-1.5 z-20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13578013/69cc42620d6131.49232597_Capturadepantalla2026-03-31165321.png"
+                        class="w-full mt-8 object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                        alt="SubliBot Inteligencia Artificial">
+                </div>
+
+                <div data-aos="fade-left">
+                    <div
+                        class="mb-4 inline-block px-4 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold tracking-widest uppercase">
+                        El Cerebro Operativo
+                    </div>
+                    <h2 class="font-grotesk text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Director Virtual.<br>
+                        <span class="text-purple-400">SubliBot IA Integrado.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        La inteligencia artificial revolucionando el mundo de la personalización y estampados. Tienes un
+                        contador experto sentado a tu lado 24/7.
+                    </p>
+                    <ul class="space-y-4 bg-darkCard p-6 rounded-2xl border border-white/5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Auditoría Instantánea</p>
+                                <p class="text-sm text-gray-400">Pregunta en lenguaje normal: <strong
+                                        class="text-white italic">"¿Qué producto me dejó más dinero hoy?"</strong></p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 shrink-0 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">
+                                ✓</div>
+                            <div>
+                                <p class="text-white font-bold leading-none mb-1">Detección de Anomalías</p>
+                                <p class="text-sm text-gray-400">La IA analiza tu histórico y te advierte si estás
+                                    comprando materia prima más cara que el mes anterior.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN EMOJIS ANIMADOS (CARACTERÍSTICAS DE CHOQUE) -->
+    <section class="py-16 px-4 bg-cyber">
+        <div class="max-w-3xl mx-auto">
+            <p data-aos="fade-up"
+                class="text-lg md:text-2xl text-center text-gray-300 font-bold mb-10 max-w-2xl mx-auto">
+                La plataforma definitiva para dueños de talleres y emprededores que imprimen bajo demanda.
+                <strong class="text-primaryGreen">A prueba de errores humanos.</strong>
+            </p>
+
+            <div class="space-y-4 text-left max-w-xl mx-auto">
+                <div data-aos="fade-up" data-aos-delay="50"
+                    class="flex items-start gap-4 p-5 rounded-2xl bg-darkCard border border-white/5 hover:border-white/20 transition-all shadow-lg shadow-black/50">
+                    <span class="text-3xl shrink-0 mt-0.5 emoji-animate">📱</span>
+                    <div>
+                        <p class="font-black text-white text-base md:text-lg leading-snug">Compatible con Celulares,
+                            Tablets y Mác</p>
+                        <p class="text-sm text-gray-400 mt-1">100% en la nube. Empieza en el taller, revisa las
+                            ganancias de camino a casa en tu celular celular.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="flex items-start gap-4 p-5 rounded-2xl bg-darkCard border border-white/5 hover:border-white/20 transition-all shadow-lg shadow-black/50">
+                    <span class="text-3xl shrink-0 mt-0.5 emoji-animate">🌎</span>
+                    <div>
+                        <p class="font-black text-white text-base md:text-lg leading-snug">Multimoneda Global</p>
+                        <p class="text-sm text-gray-400 mt-1">Pesos mexicanos, chilenos, euros, dólares o soles. Se
+                            adapta completamente a tu unidad monetaria y de medida local.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="150"
+                    class="flex items-start gap-4 p-5 rounded-2xl bg-darkCard border border-white/5 hover:border-white/20 transition-all shadow-lg shadow-black/50">
+                    <span class="text-3xl shrink-0 mt-0.5 emoji-animate">⚡</span>
+                    <div>
+                        <p class="font-black text-white text-base md:text-lg leading-snug">Listo para arrancar hoy mismo
+                        </p>
+                        <p class="text-sm text-gray-400 mt-1">Sin interfaces aburridas de contadores. Diseñado
+                            específicamente para cabezas creativas que se aburren con números brutos.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="flex items-start gap-4 p-5 rounded-2xl bg-darkCard border border-white/5 hover:border-white/20 transition-all shadow-lg shadow-black/50">
+                    <span class="text-3xl shrink-0 mt-0.5 emoji-animate">📉</span>
+                    <div>
+                        <p class="font-black text-white text-base md:text-lg leading-snug">Aniquilación del "Gasto
+                            Hormiga"</p>
+                        <p class="text-sm text-gray-400 mt-1">Detecta exactamente en qué te estás gastando el capital
+                            extra y cierra la llave para incrementar márgenes limpios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 6: PRUEBA SOCIAL Y CUANTIFICADORES -->
+    <section class="py-20 px-4 bg-darkBg border-y border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-center">
+                <div data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2"><span class="count-up"
+                            data-to="500">0</span>+</div>
+                    <div class="text-primaryGreen font-bold text-sm uppercase tracking-wide">Talleres Activos</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2"><span class="count-up"
+                            data-to="100">0</span>%</div>
+                    <div class="text-primaryGreen font-bold text-sm uppercase tracking-wide">De Crecimiento de Utilidad*
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2"><span class="count-up"
+                            data-to="4.9">0.0</span>/5</div>
+                    <div class="text-primaryGreen font-bold text-sm uppercase tracking-wide">Calificación del Software
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2"><span class="count-up"
+                            data-to="10">0</span>m</div>
+                    <div class="text-primaryGreen font-bold text-sm uppercase tracking-wide">Tiempo de configuración
+                        base</div>
+                </div>
+            </div>
+
+            <h2 data-aos="fade-up" class="font-grotesk text-3xl font-bold text-center mb-10"><span
+                    class="text-2xl">💬</span> Lo que dicen quienes ya están facturando sin dolor</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div data-aos="fade-up"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/10 hover:border-primaryGreen/50 transition-colors flex flex-col">
+                    <div class="flex gap-1 mb-3 text-goldRef">★★★★★</div>
+                    <p class="text-gray-300 mb-4 text-sm leading-relaxed flex-1">"Vendía camisetas a $80 MXN sin saber
+                        que me costaban $92 producirlas... literalmente perdía plata. SubliControl me abrió los ojos.
+                        Subí mis precios, perdí dos clientes malos y mis ganancias subieron un 40% vendiendo menos."</p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4 mt-auto">
+                        <div
+                            class="w-10 h-10 shrink-0 rounded-full bg-gradient-to-tr from-green-500 to-teal-500 flex items-center justify-center font-bold text-white">
+                            C</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Carlos Méndez</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1">🇲🇽 México | +40% Utilidad Real
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 2 -->
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/10 hover:border-primaryGreen/50 transition-colors flex flex-col">
+                    <div class="flex gap-1 mb-3 text-goldRef">★★★★★</div>
+                    <p class="text-gray-300 mb-4 text-sm leading-relaxed flex-1">"Yo tenía un Excel horrible que no
+                        cuadraba nunca y se rompió la formula en un pedido inmenso. Ahora en 2 minutos al día en mi
+                        celular sé exactamente cuánto vendí y qué debo ir a comprar. Es ridículamente fácil de usar
+                        incluso para los que odiamos matemáticas."</p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4 mt-auto">
+                        <div
+                            class="w-10 h-10 shrink-0 rounded-full bg-gradient-to-tr from-pink-500 to-orange-400 flex items-center justify-center font-bold text-white">
+                            E</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Elena Vargas</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1">🇨🇴 Colombia | Taller Físico</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 3 -->
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="bg-darkCard p-6 rounded-2xl border border-white/10 hover:border-primaryGreen/50 transition-colors flex flex-col">
+                    <div class="flex gap-1 mb-3 text-goldRef">★★★★★</div>
+                    <p class="text-gray-300 mb-4 text-sm leading-relaxed flex-1">"El módulo de recetas de Sublicontrol
+                        es oro puro. Solo pongo cuántos cm de tela uso, cuánta tinta, cuánto papel de sublimación, y me
+                        da el costo real milimétrico. Ahora cuando doy precios sabes que no estás jugando."</p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4 mt-auto">
+                        <div
+                            class="w-10 h-10 shrink-0 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white">
+                            M</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Miguel Torres</p>
+                            <p class="text-xs text-gray-500 flex items-center gap-1">🇨🇱 Chile | Imprenta Digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FAQ: ELIMINANDO ÚLTIMAS OBJECIONES LÓGICAS -->
+    <section class="py-20 px-4 bg-cyber border-y border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 data-aos="fade-up" class="font-grotesk text-3xl font-black text-center mb-10">Preguntas Frecuentes</h2>
+
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ 1 -->
+                <div class="faq-item border border-white/10 bg-darkCard rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-5 text-left font-bold text-white hover:text-primaryGreen transition-colors">
+                        ¿Funciona en cualquier país y moneda?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="faq-icon transition-transform">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-5 text-gray-400 text-sm">
+                        Sí. SubliControl está diseñado para ser de uso mundial. Tú configuras tu moneda base en el
+                        primer paso del sistema y de inmediato, todos los cálculos de insumos, costos y reportes saldrán
+                        en tu dinero local o en dólares, tú decides.
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item border border-white/10 bg-darkCard rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-5 text-left font-bold text-white hover:text-primaryGreen transition-colors">
+                        ¿Sirve para DTF, Serigrafía o Bordado también?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="faq-icon transition-transform">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-5 text-gray-400 text-sm">
+                        ¡Absolutamente! Aunque fue pensado originalmente para impresores sublimadores, la estructura de
+                        "Recetas y Fórmulas" permite que añadas insumos de cualquier técnica (Metros de DTF, Litros de
+                        tinta plastisol, Hilos de bordado) y el margen se calculará perfectamente.
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item border border-white/10 bg-darkCard rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-5 text-left font-bold text-white hover:text-primaryGreen transition-colors">
+                        ¿Qué pasa si uso Mac OSX o mi computadora es lenta?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="faq-icon transition-transform">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-5 text-gray-400 text-sm">
+                        No hay problema operativo porque no es un software descargable que consuma tus recursos.
+                        SubliControl es 100% en la Nube. Mientras tengas conexión a internet y un navegador (Safari,
+                        Chrome o en tu teléfono) puedes operarlo a velocidad relámpago.
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item border border-white/10 bg-darkCard rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-5 text-left font-bold text-white hover:text-primaryGreen transition-colors">
+                        ¿Tengo soporte si no entiendo cómo poner mis recetas?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="faq-icon transition-transform">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-5 text-gray-400 text-sm">
+                        Sí, al suscribir al plan contínuo entras a nuestra academia donde hay tutoriales cortos y
+                        soporte en línea resolviéndote las dudas de facturación para que configures tu negocio en los
+                        primeros 10 minutos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 7: URGENCIA FINAL Y ACCIÓN: PRICING -->
+    <section class="py-24 px-4 bg-darkBg border-t border-primaryGreen/20" id="pricing">
+        <div class="max-w-2xl mx-auto text-center mb-8 relative z-10" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">Esta Oferta Fundadores Desaparece En:</h2>
+            <div
+                class="countdown-timer text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 shrink-0 to-yellow-500 tabular-nums animate-pulse mb-8">
+                15:00
+            </div>
+        </div>
+
+        <div
+            class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-darkCard border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <!-- Resplandor azul detrás de la caja pricing -->
+            <div
+                class="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-neonCyan/10 blur-[100px] pointer-events-none">
+            </div>
+
+            <!-- Left: Lo que obtienes -->
+            <div class="flex-1 w-full relative z-10" data-aos="fade-right">
+                <div
+                    class="inline-flex items-center border py-0.5 font-semibold bg-primaryGreen/10 text-primaryGreen border-primaryGreen/20 rounded-full px-4 text-xs mb-4 uppercase tracking-widest">
+                    Lo que adquieres hoy
+                </div>
+                <h3 class="font-grotesk text-3xl font-black text-white mb-6">El Plan Acceso Total VIP</h3>
+
+                <ul class="space-y-4 mb-4">
+                    <li class="flex items-center gap-3 border-b border-white/5 pb-3">
+                        <svg class="text-primaryGreen w-5 h-5 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-slate-300 flex-1">Creador Calculadora de Costos y Recetas Mágicas</span>
+                        <span class="text-slate-500 line-through text-sm">$49</span>
+                    </li>
+                    <li class="flex items-center gap-3 border-b border-white/5 pb-3">
+                        <svg class="text-primaryGreen w-5 h-5 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-slate-300 flex-1">Gestor de Stock y Mermas (Con Alertas automáticas)</span>
+                        <span class="text-slate-500 line-through text-sm">$29</span>
+                    </li>
+                    <li class="flex items-center gap-3 border-b border-white/5 pb-3">
+                        <svg class="text-primaryGreen w-5 h-5 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-slate-300 flex-1">SubliBot IA Nativo (Tú Director Económico Virtual)</span>
+                        <span class="text-slate-500 line-through text-sm">$99</span>
+                    </li>
+                    <li class="flex items-center gap-3 border-b border-white/5 pb-3">
+                        <svg class="text-primaryGreen w-5 h-5 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-slate-300 flex-1">Tablero Módulo Kanban de Pedidos</span>
+                        <span class="text-slate-500 line-through text-sm">$20</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="text-primaryGreen w-5 h-5 shrink-0 animate-pulse" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span class="text-white flex-1 font-bold">BONO FULL: Reportes Financieros en PDF Extensos</span>
+                        <span class="text-slate-500 line-through text-sm">$99</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right: The Call to action -->
+            <div class="w-full md:w-[360px] bg-[#0d1f3a] border-2 border-primaryGreen/50 rounded-2xl p-6 text-center shadow-[0_0_50px_rgba(16,185,129,0.2)] relative z-10"
+                data-aos="zoom-in" data-aos-delay="200">
+                <div class="mb-2 text-slate-400">Valor real completo: <span class="line-through">$296 USD</span></div>
+                <div
+                    class="text-sm font-bold text-primaryGreen uppercase tracking-widest mb-2 flex justify-center items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> NO DEJES IR EL DESCUENTO
+                </div>
+
+                <div class="font-grotesk text-6xl font-black text-white mt-4 mb-1">
+                    $6.99
+                </div>
+                <div class="text-sm text-slate-300 mb-6 font-medium">USD / Mensual · Cancela cuando quieras</div>
+
+                <!-- CTA DEFINITIVO -->
+                <a href="https://pay.hotmart.com/L104915788Y?off=ou2lquxy&checkoutMode=10" class="block w-full">
+                    <button
+                        class="pulse-btn w-full bg-primaryGreen hover:bg-emerald-400 text-white font-black text-xl py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1 relative overflow-hidden">
+                        ADQUIRIR AHORA
+                    </button>
+                    <p class="text-[10px] text-slate-500 mt-4 leading-tight">🔒 Software protegido. Adquiere en tu
+                        unidad local.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-8 text-center text-xs text-slate-600 border-t border-white/5 pb-24 md:pb-8">
+        <p>© 2026 SubliControl Pro — El Software Definitivo para Emprendedores Impresores — Todos los derechos
+            reservados.</p>
+        <p class="mt-2 max-w-lg mx-auto">This site is not a part of the Facebook website or Facebook Inc. Additionally,
+            This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+    </footer>
+
+    <!-- REAL-TIME SALES NOTIFICATION -->
+    <div id="sales-notification"
+        class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 transform translate-y-20 opacity-0 transition-all duration-500 ease-in-out pointer-events-none">
+        <div
+            class="bg-darkCard/95 border border-primaryGreen/30 shadow-[0_4px_20px_rgba(16,185,129,0.2)] rounded-2xl p-3 md:p-4 flex items-center gap-4 max-w-[320px] md:max-w-[340px]">
+            <div
+                class="w-10 h-10 shrink-0 bg-primaryGreen/20 rounded-full flex items-center justify-center text-xl shadow-inner">
+                🖥️
+            </div>
+            <div>
+                <p class="text-white text-xs md:text-sm font-bold leading-tight" id="notify-name">Un Taller en <span
+                        class="text-primaryGreen">Colombia</span></p>
+                <p class="text-gray-400 text-[10px] md:text-xs leading-snug mt-1">Acaba de saltar a la nube con <strong
+                        class="text-white">SubliControl Pro</strong>.</p>
+                <p class="text-gray-500 text-[9px] md:text-[10px] mt-1.5 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Verificado hace <span
+                        id="notify-time">2</span> min
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS CORE -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script>
+        window.addEventListener('load', () => {
+            AOS.init({ once: true, offset: 50, duration: 800 });
+        });
+
+        // FAQ Interactive Logic
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        }
+
+        function startInteractions() {
+            // Observer para animación progresiva de números de Prueba social
+            const countUpObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseFloat(el.getAttribute('data-to'));
+                        const isDecimal = el.getAttribute('data-to').includes('.');
+                        const duration = 2000;
+                        const frameRate = 30;
+                        const totalFrames = Math.round(duration / frameRate);
+                        let frame = 0;
+                        const increment = target / totalFrames;
+
+                        const counter = setInterval(() => {
+                            frame++;
+                            const current = increment * frame;
+                            if (isDecimal) {
+                                el.textContent = current.toFixed(1);
+                            } else {
+                                el.textContent = Math.round(current);
+                            }
+
+                            if (frame >= totalFrames) {
+                                el.textContent = target;
+                                clearInterval(counter);
+                            }
+                        }, frameRate);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.count-up').forEach(el => countUpObserver.observe(el));
+
+            // Timer Urgencia Regresivo
+            const timerElements = document.querySelectorAll('.countdown-timer');
+            if (timerElements.length > 0) {
+                let totalSeconds = (15 * 60); // 15 Minutos de Urgencia
+                const updateTimer = () => {
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    timerElements.forEach(timer => timer.textContent = `${m}:${s < 10 ? '0' : ''}${s}`);
+                    if (totalSeconds > 0) totalSeconds--;
+                };
+                setInterval(updateTimer, 1000);
+                updateTimer();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', startInteractions);
+
+        // Sales Notifications (Generador de escasez visual aleatoria)
+        document.addEventListener('DOMContentLoaded', () => {
+            const countries = ["México", "Colombia", "España", "Chile", "Perú", "Ecuador", "Estados Unidos", "Argentina", "Panamá", "Guatemala"];
+            const notification = document.getElementById('sales-notification');
+            const notifyName = document.getElementById('notify-name');
+            const notifyTime = document.getElementById('notify-time');
+
+            function showSalesNotification() {
+                const country = countries[Math.floor(Math.random() * countries.length)];
+                const time = Math.floor(Math.random() * 14) + 1;
+
+                notifyName.innerHTML = `Un taller de <span class="text-primaryGreen">${country}</span>`;
+                notifyTime.textContent = time;
+
+                notification.classList.remove('translate-y-20', 'opacity-0');
+                notification.classList.add('translate-y-0', 'opacity-100');
+
+                // Esconder tras 6 segundos
+                setTimeout(() => {
+                    notification.classList.remove('translate-y-0', 'opacity-100');
+                    notification.classList.add('translate-y-20', 'opacity-0');
+                }, 6000);
+            }
+
+            // Muestra popup simulado a los 6s, 14s, etc
+            setTimeout(function loop() {
+                showSalesNotification();
+                const nextTime = Math.floor(Math.random() * 16000) + 10000;
+                setTimeout(loop, nextTime);
+            }, 6000);
+
+            // Pasar Parámetros URL (UTMs) al Checkout de Hotmart
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.toString()) {
+                document.querySelectorAll('a[href*="hotmart.com"]').forEach(link => {
+                    const sep = link.href.includes('?') ? '&' : '?';
+                    link.href = link.href + sep + urlParams.toString();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
